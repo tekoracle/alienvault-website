@@ -1,0 +1,286 @@
+{
+  "North_America": {
+    "CA": {
+      "country": "Canada",
+      "partners": {
+        "TheCryptoShop": {
+          "name": "TheCryptoShop",
+          "type": "Reseller",
+          "shop_url": "www.thecryptoshop.ca/shop?olsPage=products%2Fbitbox02",
+          "contact_url": "",
+          "contact_email": "info@thecryptoshop.ca",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "US": {
+      "country": "USA",
+      "partners": {
+        "Superstore": {
+          "name": "Hardware Wallet Superstore",
+          "type": "Distributor",
+          "shop_url": "cryptohwwallet.com/bitbox/bitbox/",
+          "contact_url": "",
+          "contact_email": "info@cryptoHWwallet.com",
+          "services": ["Webshop"],
+        },
+        "Blockstream": {
+          "name": "Blockstream",
+          "type": "Reseller",
+          "shop_url": "store.blockstream.com/product/bitbox02-bitcoin-only-edition/",
+          "contact_url": "",
+          "contact_email": "store@blockstream.com",
+          "services": ["Webshop"],
+        },
+        "BitLift": {
+          "name": "BitLift",
+          "type": "Reseller",
+          "shop_url": "bitlift.com/product/bitbox02/",
+          "contact_url": "",
+          "contact_email": "support@bitlift.com",
+          "services": ["Webshop", "BTC-only payments"],
+        },
+      },
+    },
+  },
+
+  "Europe": {
+    "DE": {
+      "country": "Germany",
+      "partners": {
+        "blockark": {
+          "name": "Blockark Shop",
+          "type": "Distributor",
+          "shop_url": "shop.blockark.de",
+          "contact_url": "",
+          "contact_email": "support@blockark.de",
+          "services": ["Webshop", "free-delivery (DE)"],
+        },
+        "hw24": {
+          "name": "HardwareWallets24",
+          "type": "Reseller",
+          "shop_url": "www.hardwarewallets24.de/hardware-wallet/bitbox",
+          "contact_url": "",
+          "contact_email": "info@haikai-ecommerce.de",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "NL": {
+      "country": "Netherlands",
+      "partners": {
+        "bol": {
+          "name": "Bol.com",
+          "type": "Reseller",
+          "shop_url": "bol.com/nl/p/digital-bitbox-hardware-wallet-voor-bitcoin-ethereum/9200000088212140/",
+          "contact_url": "",
+          "contact_email": "info@HardwareWalletOnline.nl",
+          "services": ["Webshop"],
+        },
+        "cryptomaan": {
+          "name": "Cryptomaan",
+          "type": "Reseller",
+          "shop_url": "www.cryptomaan.nl/products/bitbox02-bitcoin-only-edition",
+          "contact_url": "",
+          "contact_email": "info@cryptomaan.nl",
+          "services": ["Webshop"],
+        },
+        "hw_online": {
+          "name": "Hardware Wallet Online",
+          "type": "Reseller",
+          "shop_url": "www.hardwarewalletonline.nl/product-categorie/bitbox/",
+          "contact_url": "",
+          "contact_email": "info@hardwarewalletonline.nl",
+          "services": ["Webshop", "free-delivery (NL)"],
+        },
+      },
+    },
+    "FR": {
+      "country": "France",
+      "partners": {
+        "cybermonnaies": {
+          "name": "Le Comptoir des Cybermonnaies",
+          "type": "Reseller",
+          "shop_url": "www.lecomptoirdescybermonnaies.fr",
+          "contact_url": "",
+          "contact_email": "contact@ccbdx.fr",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "HU": {
+      "country": "Hungary",
+      "partners": {
+        "blue": {
+          "name": "The Blue Chip",
+          "type": "Reseller",
+          "shop_url": "www.bluechip.hu/kereses?q=bitbox",
+          "contact_url": "",
+          "contact_email": "info@bluechip.hu",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "IT": {
+      "country": "Italy",
+      "partners": {
+        "ComproEuro": {
+          "name": "ComproEuro",
+          "type": "Distributor",
+          "shop_url": "comproeuro.it/",
+          "contact_url": "",
+          "contact_email": "info@comproeuro.it",
+          "services": ["Physical store"],
+        },
+      },
+    },
+    "RU": {
+      "country": "Russia",
+      "partners": {
+        "cryptonist": {
+          "name": "Cryptonist",
+          "type": "Reseller",
+          "shop_url": "cryptonist.ru/catalog/brand-bitbox/",
+          "contact_url": "",
+          "contact_email": "sales@cryptonist.ru",
+          "services": ["Webshop"],
+        },
+        "linuxcenter": {
+          "name": "Linuxcenter",
+          "type": "Reseller",
+          "shop_url": "linuxcenter.shop/product/bitbox02",
+          "contact_url": "",
+          "contact_email": "info@linuxcenter.shop",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "RS": {
+      "country": "Serbia",
+      "partners": {
+        "ecd": {
+          "name": "ECD",
+          "type": "Reseller",
+          "shop_url": "ecd.rs/shop",
+          "contact_url": "",
+          "contact_email": "info@ecd.rs",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "SI": {
+      "country": "Slovenia",
+      "partners": {
+        "eventus": {
+          "name": "Eventus sistemi",
+          "type": "Distributor",
+          "shop_url": "www.eventus.si/en/b/shift-devices",
+          "contact_url": "",
+          "contact_email": "prodaja@eventus.si",
+          "services": ["Webshop"],
+        },
+        "mimovrste": {
+          "name": "Mimovrste",
+          "type": "Reseller",
+          "shop_url": "mimovrste.com/iskanje?s=bitbox",
+          "contact_url": "",
+          "contact_email": "info@mimovrste.com",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "CH": {
+      "country": "Switzerland",
+      "partners": {
+        "digitec": {
+          "name": "Digitec",
+          "type": "Reseller",
+          "shop_url": "www.digitec.ch/de/brand/shift-cryptosecurity-37315",
+          "contact_url": "",
+          "contact_email": "digitec@digitec.ch",
+          "services": ["Webshop"],
+        },
+        "galaxus": {
+          "name": "Galaxus",
+          "type": "Distributor",
+          "shop_url": "www.galaxus.ch/de/brand/shift-cryptosecurity-37315",
+          "contact_url": "",
+          "contact_email": "galaxus@galaxus.ch",
+          "services": ["Webshop"],
+        },
+        "bitconsult": {
+          "name": "bitConsult",
+          "type": "Reseller",
+          "shop_url": "www.bitconsult.ch/search?type=product&q=bitbox02",
+          "contact_url": "",
+          "contact_email": "info@bitconsult.ch",
+          "services": ["Webshop", "Physical store"],
+        },
+      },
+    },
+    "GB": {
+      "country": "United Kingdom",
+      "partners": {
+        "MyHardwareWallet": {
+          "name": "MyHardwareWallet",
+          "type": "Distributor",
+          "shop_url": "myhardwarewallet.co.uk/brand/bitbox/",
+          "contact_url": "",
+          "contact_email": "hello@myhardwarewallet.co.uk",
+          "services": ["Webshop"],
+        },
+        "inspiring": {
+          "name": "Inspiring Company",
+          "type": "Educational partner",
+          "shop_url": "www.inspiring.co.uk/",
+          "contact_url": "",
+          "contact_email": "steve.ratheram@inspiring.co.uk",
+          "services": ["Webshop"],
+        },
+      },
+    },
+  },
+  "Middle_East": {
+    "IL": {
+        "country": "Israel",
+        "partners": {
+          "btchouse": {
+            "name": "The Hardware Wallet's House",
+            "type": "Reseller",
+            "shop_url": "hardwarewallet.ovh/en/17-shift-cryptosecurity",
+            "contact_url": "",
+            "contact_email": "hw@hardwarewallet.ovh",
+            "services": ["Webshop"],
+          },
+        },
+    },
+  },
+  "Asia-Pacific": {
+    "CN": {
+      "country": "China",
+      "partners": {
+        "conwallet": {
+          "name": "CoinWallet",
+          "type": "Reseller",
+          "shop_url": "www.coinwalletcn.com/",
+          "contact_url": "",
+          "contact_email": "sales@coinwalletcn.com",
+          "services": ["Webshop"],
+        },
+      },
+    },
+    "AU": {
+      "country": "Australia",
+      "partners": {
+        "coinstop": {
+          "name": "Coinstop",
+          "type": "Reseller",
+          "shop_url": "coinstop.io/products/bitbox02-multi-edition",
+          "contact_url": "",
+          "contact_email": "sales@coinstop.com.au",
+          "services": ["Webshop", "free-delivery (AUS)"],
+        },
+      },
+    },
+  },
+}

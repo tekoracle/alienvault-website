@@ -1,0 +1,11 @@
+{
+    "bitbox01": {
+        "id": "bitbox02-promo",
+        "message": {
+            "en": "As a BitBox01 owner, you are eligible to a 30% loyalty discount on any BitBox02. Please use code ‘1F39B2’ at check out. Read about the benefits of upgrading to a BitBox02."
+        },
+        "link": {
+            "href": "https://shiftcrypto.ch/upgrade/"
+        }
+    }
+}

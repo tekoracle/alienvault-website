@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1">
+
+    <title>Shift Cryptosecurity{% if page.path != "index.html" %} {{ page.title }}{% endif %}</title>
+    <meta name="description" content="{{ page.description }}">
+
+    <meta property="og:url" content="https://shiftcrypto.ch" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if page.path == "index.html" %}Shift Cryptosecurity{% else %}{{ page.title }}{% endif %}" />
+    <meta property="og:description" content="{{ page.description }}" />
+    <meta property="og:image" content="https://shiftcrypto.ch{{ page.image | relative_url }}" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ShiftCryptoHQ" />
+
+    <link rel="stylesheet" href="{{ '/css/flexboxgrid.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/animate.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/responsive.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/print.css' | relative_url }}" media="print">
+    <link rel="stylesheet" href="{{ '/css/ribbons.css' | relative_url }}">
+
+
+    <script src="{{ '/js/jquery-3.4.0.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/trianglify.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/wow.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/simpleslider.min.js' | relative_url }}"></script>
+    <script src="{{ '/js/script.js' | relative_url }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ '/js/tapfiliate.js' | relative_url }}"></script>
+
+    <link rel="icon" type="image/png" href="{{ 'assets/favicons/favicon-16.png' | relative_url }}" sizes="16x16" />
+    <link rel="icon" type="image/png" href="{{ 'assets/favicons/favicon-32.png' | relative_url }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ 'assets/favicons/favicon-96.png' | relative_url }}" sizes="96x96" />
+    <link rel="icon" type="image/png" href="{{ 'assets/favicons/favicon-128.png' | relative_url }}" sizes="128x128" />
+    <link rel="icon" type="image/png" href="{{ 'assets/favicons/favicon-196.png' | relative_url }}" sizes="196x196" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133876831-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-133876831-1');
+    </script>
+    <script type="text/javascript">
+      (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+      tap('create', '11449-8eb285', { integration: "javascript" });
+      tap('detect');
+    </script>
+    <!--DESKPRO_WIDGET_LOADER::BEGIN-->
+    <script type="text/javascript">
+    window.DESKPRO_WIDGET_OPTIONS = {
+        "helpdeskUrl": "https:\/\/support.shiftcrypto.ch\/"
+    };
+    </script>
+    <script type="text/javascript" id="dp-widget-loader" src="https://support.shiftcrypto.ch/dyn-assets/pub/build/widget_loader.min.js"></script>
+    <!--DESKPRO_WIDGET_LOADER::END-->
+  </head>
+  <body>
+    {% if page.path != "upgrade.html" %}
+    {% for banner in site.data.banners.website %}
+      {% assign today_date = 'now' | date: '%s' %}
+      {% assign from_date = banner.last.from | date: '%s' %}
+      {% assign until_date = banner.last.till | date: '%s' %}
+      {% if today_date > from_date and today_date < until_date %}
+      <div class="banner">
+          <p>{{banner.last.text}}</p>
+      </div>
+      {% else %}
+        {% continue %}
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div id="nav" class="nav-container">
+      <div class="content-width row">
+        <nav class="nav-content col-xs-12">
+          <div class="logo">
+            <a href="{{ site.baseurl }}{% link index.html %}">{% include shift_logo.svg %}</a>
+          </div>
+            <ul class="nav-menu">
+              <li{% if page.path contains 'bitbox01/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox01/index.html %}" class="link minimal">BitBox01</a></li>
+              <li{% if page.path contains 'bitbox02/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/index.html %}" class="link minimal">BitBox02</a></li>
+              <li{% if page.path contains 'app/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link app/index.html %}" class="link minimal">App</a></li>
+              <li{% if page.path contains 'base/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link base/index.html %}" class="link minimal">Base</a></li>
+              <li><a href="https://tep.shiftcrypto.ch" target="_blank" class="link minimal">Tep</a></li>
+              <li{% if page.path contains 'about/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link about/index.html %}" class="link minimal">About</a></li>
+              <li{% if page.path contains 'start/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link start/index.html %}" class="link minimal">Start</a></li>
+            </ul>
+            <ul class="cart-menu text-right">
+              <li{% if page.path contains 'buy' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link buy.html %}" class="link minimal">Shop</a></li>
+              <li><a target="_blank" href="https://medium.com/shiftcrypto" class="link minimal">Blog</a></li>
+              <li><a target="_blank" href="https://guides.shiftcrypto.ch/" class="link minimal">Support</a></li>
+            </ul>
+            <div class="mobile-container hide">
+              <ul class="mobile-menu shadow">
+                <li{% if page.path contains 'bitbox01/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox01/index.html %}" class="link minimal">BitBox01</a></li>
+                <li{% if page.path contains 'bitbox02/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/index.html %}" class="link minimal">BitBox02</a></li>
+                <li{% if page.path contains 'app/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link app/index.html %}" class="link minimal">App</a></li>
+                <li{% if page.path contains 'base/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link base/index.html %}" class="link minimal">Base</a></li>
+                <li><a href="https://tep.shiftcrypto.ch" target="_blank" class="link minimal">Tep</a></li>
+                <li{% if page.path contains 'about/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link about/index.html %}" class="link minimal">About</a></li>
+                <li{% if page.path contains 'start/' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link start/index.html %}" class="link minimal">Start</a></li>
+                <li{% if page.path contains 'buy' %} class="active"{% endif %}><a href="{{ site.baseurl }}{% link buy.html %}" class="link minimal">Shop</a></li>
+                <li><a target="_blank" href="https://medium.com/shiftcrypto" class="link minimal">Blog</a></li>
+                <li><a target="_blank" href="https://guides.shiftcrypto.ch/" class="link minimal">Support</a></li>
+              </ul>
+            </div>
+            <ul class="mobile-icon">
+              <li>
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg class="x-icon hide" xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </li>
+            </ul>
+        </nav>
+      </div>
+    </div>
+
+    {{ content }}
+
+    <footer class="rightup bottomFlat h-padding with-space">
+      <div class="content-width">
+        <div class="row end-xs">
+          <div class="col-xs-12 col-sm-10 text-right">
+            <img class="footer-logo" src="{{ '/assets/images/logos/reversed_swiss_made.svg' | relative_url }}" />
+            <p class="meta">
+              Please do not hesitate to contact us at <a href="mailto:support@shiftcrypto.ch">support@shiftcrypto.ch</a>.<br>
+              © 2020 Shift Cryptosecurity AG, Switzerland. All rights reserved.
+            </p>
+          </div>
+        </div>
+        <div class="row m-top-large center-xs text-left">
+          <div class="col-xs-4 col-sm-3 col-md-2">
+            <p class="footer-label meta">Partners</p>
+            <ul>
+              <li><a href="https://affiliates.shiftcrypto.ch" target="_blank">Affiliate program</a></li>
+              <li><a href="{{ site.baseurl }}{% link buy.html %}">Resellers</a></li>
+              <li><a href="{{ site.baseurl }}{% link reviewers.html %}">Reviewers</a></li>
+              <li><a href="https://github.com/digitalbitbox" target="_blank">Developers</a></li>
+              <li><a href="{{ site.baseurl }}{% link bug-bounty-program.html %}">Bug bounty program</a></li>
+              <li><a href="{{ site.baseurl }}{% link jobs/index.html %}">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-4 col-sm-3 col-md-2">
+            <p class="footer-label meta">Products</p>
+            <ul>
+              <li><a href="{{ site.baseurl }}{% link bitbox01/index.html %}">BitBox01</a></li>
+              <li><a href="{{ site.baseurl }}{% link bitbox02/index.html %}">BitBox02</a></li>
+              <li><a href="{{ site.baseurl }}{% link app/index.html %}">BitBoxApp</a></li>
+              <li><a href="{{ site.baseurl }}{% link base/index.html %}">BitBoxBase</a></li>
+              <li><a href="https://tep.shiftcrypto.ch" target="_blank">BitBoxTep</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-4 col-sm-3 col-md-2">
+            <p class="footer-label meta">Policies</p>
+            <ul>
+              <li><a href="{{ site.baseurl }}{% link policies/refund-policy.html %}">Refund policy</a></li>
+              <li><a href="{{ site.baseurl }}{% link policies/privacy-policy.html %}">Privacy policy</a></li>
+              <li><a href="{{ site.baseurl }}{% link policies/terms-of-service.html %}">Terms of service</a></li>
+              <li><a href="{{ site.baseurl }}{% link policies/limited-warranty.html %}">Limited warranty</a></li>
+              <li><a href="{{ site.baseurl }}{% link policies/bug-bounty-policy.html %}">Bug bounty policy</a></li>
+              <li><a href="{{ site.baseurl }}{% link policies/shipping.html %}">Shipping policy</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-9 col-md-5 col-md-offset-1">
+            <p class="footer-label meta">Newsletter</p>
+            <form action="https://shiftcrypto.us20.list-manage.com/subscribe/post?u=d425177ce9ba3482f7f26762a&amp;id=df03d20df1"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll" class="row m-bottom-medium">
+                <div class="col-xs-8 p-left-none">
+                  <input type="email" placeholder="Your Email" value="" name="EMAIL" class="required email width-100" id="mce-EMAIL" />
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response no-show" id="mce-error-response"></div>
+                  <div class="response no-show" id="mce-success-response"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_d425177ce9ba3482f7f26762a_df03d20df1" tabindex="-1" value="">
+                </div>
+                <div class="col-xs-4 p-right-none">
+                  <button class="button primary shadow width-100" style="min-width: 0;" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">Join</button>
+                </div>
+              </div>
+            </form>
+            <div class="row m-top-large">
+              <div class="col-xs-4 p-left-none">
+                <p class="footer-label meta m-top-none">Platforms<p>
+                <div class="inline">
+                  <a href="https://twitter.com/ShiftCryptoHQ" target="_blank">{% include twitter_icon.svg %}</a>
+                  <a href="https://github.com/digitalbitbox" target="_blank">{% include github_icon.svg %}</a>
+                  <a href="https://medium.com/shiftcrypto" target="_blank">{% include medium_icon.svg %}</a>
+                  <a href="https://www.youtube.com/channel/UCBEYTMaU5UVd6RWLI_2tzzA/playlists" target="_blank">{% include youtube_icon.svg %}</a>
+                </div>
+              </div>
+              <div class="col-xs-8 p-right-none">
+                <img src="{{ '/assets/images/images/euflag.png' | relative_url }}" style="width: 48px; float: left; margin: 0 8px 2px 0;">
+                <p class="meta m-top-none">This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 855049.</p>
+                <img alt="Creative Commons License" style="width: 100px; float: left; margin: 0 8px 2px 0;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                <p class="meta m-top-none" href="http://creativecommons.org/licenses/by/4.0/"><br />Except where otherwise noted, content on this site is licensed under a  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

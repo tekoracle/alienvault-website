@@ -1,0 +1,49 @@
+---
+title: BitBox01 threat model
+description: BitBox01 threat model
+image: /assets/images/ogp/bitbox01.png
+---
+
+{% include bitbox01-subnav.html %}
+
+<section class="rightup topFlat with-space gray-gradient" id="hero_BB02">
+  <div class="content-width">
+    {% include bitbox-logo.html %}
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-7">
+        <h1 class="title">BitBox<span class="lab-regular">01</span> threat model</h1>
+      </div>
+    </div>
+    <div class="row center-xs middle-sm m-top-medium">
+      <div class="col-xs-12 col-sm-8 items">
+          <div class="item">
+            <h2 id="introduction">Introduction</h2>
+            <p>
+              This page uses technical language and is primarily written for advanced users and security researchers.
+            </p>
+          </div>
+
+          <div class="item">
+            <h2 id="threat-model">Threat model</h2>
+            <p>
+              The BitBox01 is designed to protect you from attackers that
+              try to steal your funds (without using coercion),
+              make you lose funds (without getting it themselves)
+              or compromise your privacy without unlocking the device first, for example, by learning your transaction history.
+              In order to be secure, you should always trust the paired mobile app screen over the information displayed on your computer and verify carefully what is displayed there. The mobile app supports verification of Bitcoin and Litecoin address and transaction details.
+              The reason why you should buy and use a hardware wallet is to reduce your attack surface from a highly complex general purpose operating system with millions of lines of code and weak security domains to a security device built for a single purpose – namely to keep your private keys private – that only runs trusted code.
+            </p>
+          </div>
+
+          <div class="item">
+            <h2 id="out-of-scope">Out of scope</h2>
+            <p>
+              There are no protections in place if an attacker gets access to both your device and your device password, or to your backup and your backup recovery password.
+              (If you forget or misremember your backup recovery password, your coins are lost and no one can help you.)
+              Attacks involving physical access are out of scope for the threat model of the BitBox01.
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

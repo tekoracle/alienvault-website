@@ -1,0 +1,109 @@
+---
+title: BitBox01 technical vulnerabilities documentation
+image: /assets/images/ogp/bitbox01.png
+redirect_from: /disclosure/
+---
+
+<section class="rightup with-space topFlat gray-gradient">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h1 class="title">BitBox<span class="lab-light">01</span> technical vulnerabilities documentation</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rightup with-space">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h4 class="subtitle m-top-none black">Disclosure document, 6 December 2018</h4>
+        <p class="text-left m-top-xlarge">As part of our continued commitment to working with our broader community, we welcome independent researchers to continuously challenge our security architecture in order to make our products as secure as we possibly can. We manage this process through our BitBox Bug Bounty Program. In addition, we release technical notes to accompany the findings.</p>
+        <p class="text-left">Below is our technical discussion of the issues, fixes and commentary of Saleem Rashid’s report <a href="https://saleemrashid.com/2018/11/26/breaking-into-bitbox/" target="_blank">Breaking into the (digital) BitBox</a> from 26 November 2018.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rightup rightdown with-space gray-gradient">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h4 class="subtitle m-top-none black">01</h4>
+        <p class="text-left m-top-xlarge">Accessing the 'xpub' API command for the master key path of both the hidden and the standard wallet allowed for the reconstructing of the private keys of the standard and hidden wallet.</p>
+        <h4 class="subtitle m-top-xlarge">Overview</h4>
+        <p class="text-left m-top-xlarge">Identified in February 2018, we addressed this simple mistake concerning the creation of hidden wallets through a patch on 12 March 2018 in firmware v3.0.0. The vulnerability existed if the user accessed both the standard and the hidden wallet on the same computer and an attacker who was aware of the mistake and had  compromised the computer. To give users enough time to upgrade, we intentionally delayed publishing details that could allow an attacker to mount an exploit.</p>
+        <h4 class="subtitle m-top-xlarge">Technical explanation</h4>
+        <p class="text-left m-top-xlarge">The <a target="_blank" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">Bitcoin Improvement Proposal #32</a> (BIP32) specifies a way to create hierarchical deterministic wallets, whereby all key pairs are derived from a single master key. There is a public ('xpub') and private ('xprv') version of each key, where both are extended with the same number known as the 'chain code' to derive further keys. The xpub can be shared and is used to derive all the addresses of a wallet. The xprv needs to be kept secret and is used to derive the private keys needed to sign transactions. Mistakenly, the master xpub of the hidden wallet, which a user can access by entering the hidden wallet's password, used the master private key of the standard wallet as its chain code and the chain code of the standard wallet’s master key as its corresponding private key. After querying the master xpub of both wallets, an attacker could recombine them to get the master xprv of both the standard and the hidden wallet, giving them full access to the funds.</p>
+        <h4 class="subtitle m-top-xlarge">Mitigation</h4>
+        <p class="text-left m-top-xlarge">We applied two fixes. In the first, we removed the link between the hidden wallet and the standard wallet. The hidden wallet is now derived from the wallet seed in the same way that the standard wallet is derived from the seed. This gives an added benefit of extra plausible deniability in that the hidden wallet can be recovered from a backup and become the standard wallet. In the second, the root xpub can no longer be queried through the API in order to protect already existing hidden wallets.</p>
+        <p class="text-left">In a separate but related optimization, the hidden and standard wallet operations on the hardware level were made to be similar in order to avoid physical detection when using physical probes to read data on wires in the device. We had already designed the hidden and standard wallet operations at the API and app level to be similar.</p>
+        <h4 class="subtitle m-top-xlarge">What should I do?</h4>
+        <p class="text-left">We believe the patch was released early enough that the vulnerability was not exploited. However, since an attacker could have stolen the master private key without moving the funds yet, the risk cannot be considered to be zero unless  <a href="{{ site.baseurl }}{% link bitbox01/wallet-sweep.html %}">move your funds into a new wallet</a>.</p>
+        <p class="text-left">We have found no evidence that the issue was exploited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="leftup with-space">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h4 class="subtitle m-top-none black">02</h4>
+        <p class="m-top-xlarge">Man-in-the-middle (MITM) between the mobile verification app and the BitBox</p>
+        <h4 class="subtitle m-top-xlarge">Overview</h4>
+        <p class="text-left m-top-xlarge">When initially pairing a BitBox to the mobile verification app, a man-in-the-middle (MITM) on a compromised computer could insert themselves and then later change the information to be displayed on the mobile app. We provided a patch on 31 July 2018 in firmware v4.0.0. The vulnerability existed only during the initial pairing and if your computer was compromised by an attacker aware of the issue.</p>
+        <h4 class="subtitle m-top-xlarge">Technical explanation</h4>
+        <p class="text-left m-top-xlarge">A mobile verification app pairs to the BitBox using the common and strong elliptic-curve Diffie–Hellman (ECDH) key exchange under the hood, combined with a 'blink code' that a user enters by hand into the mobile app. ECDH requires sharing randomly-generated 'public' information between the two endpoints that, when combined with the randomly-generated 'private' information kept secret within each endpoint, a common shared secret key can be derived on each side. This key can then be used for encrypting future communication. However, ECDH is susceptible to a MITM that creates two ECDH pairings: one with the BitBox and one with the mobile app. Entering the blink code by hand provides a second information channel not seen by the MITM. However, because we mixed the blinked number into the shared secret and provided a ciphertext with a known plaintext to verify the pairing, the blinked number could be brute-forced by the MITM due to its limited entropy and then be applied to both channels. This prevented the BitBox and the mobile verification app from detecting the MITM. A drawback of the manual entry of a blink code is that only a small amount of entropy can be conveyed. Blinking to convey a large amount of entropy takes too long and is a bad user experience.</p>
+        <h4 class="subtitle m-top-xlarge">Mitigation</h4>
+        <p class="text-left m-top-xlarge">Instead of using the blink code to alter the shared secret, we use the blink code now to verify the shared secret. In order to prevent a MITM from brute-forcing a second ECDH key pair that results in the same blink code, the BitBox and the mobile verification app wait for a commitment (in the form of a SHA256 hash) of the other party’s ECDH public key before releasing their public key. This forces a MITM to also commit to its injected public keys before being able to compute the shared secrets with the observed public keys, which avoids brute-forcing. In addition, a hash of the shared key is blinked instead of the actual key in order to prevent an attacker from using a side-channel to gain knowledge of the key, for example, through a laptop webcam or by measuring varying electricity consumption during blinking. Note that if the whole shared secret key could be transmitted through the blink code, the precommitment would not be necessary. However, manual entry of the blink code takes time and blinking the full key would take an inordinate amount of time.</p>
+        <h4 class="subtitle m-top-xlarge">What should I do?</h4>
+        <p class="text-left m-top-xlarge">We believe the patch was released early enough that the vulnerability was not exploited. To be safe, you may at any time redo the mobile verification app pairing process using the latest firmware.</p>
+        <p class="text-left">We have found no evidence that the issue was exploited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="leftup leftdown with-space gray-gradient">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h4 class="subtitle m-top-none black">03</h4>
+        <p class="m-top-xlarge">Simulating the secure chip</p>
+        <h4 class="subtitle m-top-xlarge">Overview</h4>
+        <p class="text-left m-top-xlarge">After physically breaking apart the BitBox casing, attaching invasive probes, and manipulating the data sent to the BitBox's microcontroller, a BitBox could be reset but without erasing the wallet secrets. A patch was provided on 31 July 2018. If the bottom casing of your BitBox has not been removed or tampered with, you are not at risk.</p>
+        <h4 class="subtitle m-top-xlarge">Technical explanation</h4>
+        <p class="text-left m-top-xlarge">A secret key used to encrypt data on the secure chip is stored in the microcontroller. By using invasive probes to intercept messages between the secure chip and the microcontroller, an attacker could bypass wallet erasure, reset and initialize the device with a known password, and then access the previously stored wallet. This was possible due to not resetting the secret key and then relying on the return value of the secure chip's hardware random number generator.</p>
+        <h4 class="subtitle m-top-xlarge">Mitigation</h4>
+        <p class="text-left m-top-xlarge">The secret key is scrambled when the wallet is reset no matter the state of the secure chip. Scrambling the secret key means that the wallet secrets can no longer be decrypted even if the wallet erasure is bypassed. This is done in part by using a one-way hash of the old key, combined with other random but constant data not available on the data bus to the secure chip, during scrambling. In addition, the device is halted if unexpected data is returned.</p>
+        <h4 class="subtitle m-top-xlarge">What should I do?</h4>
+        <p class="text-left">No action is required except to be sure to use the latest firmware release available in the <a href="{{ site.baseurl }}{% link start/index.html %}">latest desktop app</a></p>
+        <p class="text-left">We have found no evidence that the issue was exploited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rightup with-space">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h4 class="subtitle m-top-none black">04</h4>
+        <p class="m-top-xlarge">Unauthenticated USB communication</p>
+        <h4 class="subtitle m-top-xlarge">Overview</h4>
+        <p class="text-left m-top-xlarge">Encrypted USB communication, when not authenticated, can be modified by a man-in-the-middle (MITM) attacker in undesirable ways. A patch was provided on 4 December 2018 in firmware v5.0.0. To date, a method about how to exploit this issue with the BitBox has not been reported.</p>
+        <h4 class="subtitle m-top-xlarge">Technical explanation</h4>
+        <p class="text-left m-top-xlarge">Specifically for the BitBox API protocol, the first 16 characters of the encrypted USB communication could be changed such that it decrypts into text supplied by an attacker when taking advantage of the malleability properties of the AES-CBC mode of encryption. Later characters could also be modified but without knowing what they will decrypt to.</p>
+        <p class="text-left">Note that an attacker with MITM capabilities likely has easier and more reliable ways than to modify the USB communication, for example by replacing the app with a malicious app. The BitBox security model, while attempting to prevent modified USB communication, does not require it. Instead, the mobile verification app is provided to display critical information about the BitBox's operations.</p>
+        <h4 class="subtitle m-top-xlarge">Mitigation</h4>
+        <p class="text-left m-top-xlarge">A message authentication code (MAC) has been added to check the integrity and authenticity of the encrypted USB communication and also to prevent padding oracle attacks.</p>
+        <h4 class="subtitle m-top-xlarge">What should I do?</h4>
+        <p class="text-left m-top-xlarge">We believe the patch was released early enough that the vulnerability was not exploited. To be safe, you may at any time redo the mobile verification app pairing process using the latest firmware.</p>
+        <p class="text-left">We have found no evidence that the issue was exploited.</p>
+      </div>
+    </div>
+  </div>
+</section>

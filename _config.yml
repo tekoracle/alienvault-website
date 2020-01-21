@@ -1,0 +1,27 @@
+# For technical reasons, this file is not reloaded automatically when you run the command
+# 'bundle exec jekyll serve'. If you change this file, you have to restart the server process.
+
+title: Shift Cryptosecurity
+permalink: pretty
+date_format: "%e %B %Y" # http://strftime.net
+
+# https://github.com/jekyll/jekyll/issues/7478
+theme: null
+
+plugins:
+  - jekyll-redirect-from
+
+exclude:
+  - "*.py"
+  - "CNAME"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "README.md"
+  - "vendor/bundle"
+  - "bitbox01/api/api.json"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: layout

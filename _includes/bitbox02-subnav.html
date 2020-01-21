@@ -1,0 +1,16 @@
+<div class="subnav-container">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <ul class="subnav text-left">
+          <li {% if page.path == 'bitbox02/index.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/index.html %}">Overview</a></li>
+          <li {% if page.path == 'bitbox02/reviews.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/reviews.html %}">Reviews</a></li>
+          <li {% if page.path == 'bitbox02/security-features.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/security-features.html %}">Security features</a></li>
+          <li {% if page.path == 'bitbox02/threat-model.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox02/threat-model.html %}">Threat model</a></li>
+          <li class="end"><a href="https://github.com/digitalbitbox/bitbox02-firmware" target="_blank">View on GitHub</a></li>
+          <li><a href="https://guides.shiftcrypto.ch/bitbox02/" target="_blank">Support</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

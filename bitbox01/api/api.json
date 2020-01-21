@@ -1,0 +1,288 @@
+{
+
+  "title": "API",
+  
+  "footnote": "",
+  
+  "api":
+  [
+  
+      {   "title": "Generate a wallet on your BitBox",
+          "syntax":
+          [   {
+                  "method":
+                  {   "seed" :
+                      {   "source": "<i>source</i>",
+                          "filename": "<i>filename</i>",
+                          "entropy": "<i>entropy</i>",
+                          "key": "<i>key</i>",
+                          "U2F_counter": "<i>counter</i>"
+                      }
+                  },
+                  "reply": {"seed" : "success"},
+                  "notes": "Source:&nbsp;&nbsp;<code>create</code>, <code>backup</code>, <code>U2F_create</code>, or <code>U2F_load</code>. <code>create</code> securely creates a new wallet on the device. <code>U2F_create</code> securely creates a new U2F master key on the device. In both cases, a backup <code><i>filename</i></code> is automatically saved to the micro SD card that contains the wallet seed, the U2F master key, and the device name. <code>backup</code> creates a wallet from a backup <code><i>filename</i></code> on the micro SD card. <code>U2F_load</code> sets the U2F master key as that contained in the backup. <code><br><br><i>key</i></code> is the passphrase used when cryptographically generating a wallet. The <code><i>key</i></code> is recommended to be strengthened (e.g. PBKDF2) by the client software in order to make brute force attacks on the backup more difficult. <br><br><code>entropy</code> is optional if using the <code>create</code> mode. User-supplied <code><i>entropy</i></code> can be added to the output of the device's hardware random number generator when creating a wallet.<br><br><code><i>counter</i></code> sets the U2F counter value. It is a 32-bit number (without quotes) and is optional if using the <code>U2F_create</code> or <code>U2F_load</code> modes. If not specified, the U2F counter value stored inside the device is unchanged. To avoid setting the counter too low, the client code is recommended to set the counter to be the <code>unix_time_seconds * ave_u2f_calls_per_second</code>. A safe choice is 1 call every 10 seconds, giving over 1000 years until the counter is filled."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Backup the existing wallet to a micro SD card",
+          "syntax":
+          [   {
+                  "method":
+                  {   "backup" :
+                      {   "filename": "<i>filename</i>",
+                          "key": "<i>key</i>",
+                          "source" : "<i>U2F/HWW/all</i>"
+                      }
+                  },
+                  "reply":  {"backup" : "success"},
+                  "notes":  "Saves a backup of the wallet to a file <code><i>filename</i></code> in a <code>digitalbitbox</code> folder on the micro SD card. <code><i>source</i></code> specifies the secret to back up (hardware wallet seed, U2F master key, or both); it is optional for backward compatibility and defaults to <code>all</code>. <code><i>key</i></code> is the wallet passphrase and used to verify the integrity of the hardware wallet seed in the backup file; it is ignored is source is <code>U2F</code>. The SD card should be formatted (FAT file system) before use."
+              },
+              {
+                  "method": {"backup" : "list"},
+                  "reply":  {"backup" : "<i>files</i>"},
+                  "notes":  "Lists the files and folders in the <code>digitalbitbox/</code> folder on the micro SD card."
+              },
+              {
+                  "method":
+                  {   "backup" :
+                      {   "check": "<i>filename</i>",
+                          "source" : "U2F/HWW",
+                          "key": "<i>key</i>"
+                      }
+                  },
+                  "reply":  {"backup" : "success"},
+                  "notes":  "Check if the backup <code><i>filename</i></code> on the micro SD card matches the corresponding secret stored in the BitBox (either main or hidden wallet). <code><i>source</i></code> is either the hardware wallet seed (HWW), or the U2F master key; it is optional for backward compatibility and defaults to <code>HWW</code>. <code><i>key</i></code> is the (stretched) password for the seeded wallet; it is ignored when checking the U2F master key."
+              },
+              {
+                  "method": {"backup" : "erase"},
+                  "reply":  {"backup" : "success"},
+                  "notes":  "Erase everything in the <code>digitalbitbox/</code> folder on the micro SD card."
+              },
+              {
+                  "method":
+                  {   "backup" :
+                      {
+                          "erase": "<i>filename</i>"
+                      }
+                  },
+                  "reply":  {"backup" : "success"},
+                  "notes":  "Erase <code><i>filename</i></code> in the <code>digitalbitbox/</code> folder on the micro SD card."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Set a password",
+          "syntax":
+          [   {
+                  "method": {"password" : "<i>password</i>"},
+                  "reply":  {"password" : "success"},
+                  "notes": "A <code>password</code> is required that has a length of at least 4 characters. The password needs to be sent only once and is used to encrypt all communication via the AES-256-CBC algorithm. Special symbols (UTF-8) are allowed."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Access a hidden wallet",
+          "syntax":
+          [   {
+                  "method":
+                  {   "hidden password" :
+                      {
+                          "password": "<i>hidden_password</i>",
+                          "stretched_password": "<i>hidden_password</i>"
+                      }
+                  },
+                  "reply":  {"hidden password" : "success"},
+                  "notes": "As a plausible deniability security feature, once set, a <code>hidden password</code> can be used to access a hidden wallet. <br><br>For firmware versions 2.3.0 or higher, if a different hidden password is set, a different hidden wallet is created. Resetting the hidden password for a previous hidden wallet will load the previous hidden wallet (specific to a given wallet seed). Using a hidden password to recover from a backup file will cause the hidden wallet to be loaded as the standard wallet, adding more plausibility. The hidden wallet is erased if the device is factory reset, a new wallet is created onboard, or a wallet is recovered from a backup."
+              }
+          ]
+      },
+  
+  
+      {  "title": "Sign using a private key",
+          "syntax":
+          [   {
+                  "method":
+                  {   "sign" :
+                      {
+                          "data": "<i>hasharray</i>",
+                          "checkpub": "<i>pubkeyarray</i>",
+                          "meta": "<i>metadata</i>"
+                      }
+                  },
+                  "reply":
+                  {   "echo" :
+                      {
+                          "data": "<i>hasharray</i>",
+                          "checkpub": "<i>pubkeyarray</i>",
+                          "meta": "<i>metadata</i>",
+                          "pin": "<i>lock_pin</i>"
+                      }
+                  },
+                  "notes": "The <code>sign</code> command produces ECDSA signatures of hashes given in <code>data</code>. Two <code>sign</code> commands must be sent in a row. The first command produces an encrypted verfication message. The second command (see below) returns an array of <code><i>signatures</i></code> and corresponding signing <code><i>pubkeys</i></code>. Verification messages allow two-factor authentication (2FA) for highest security.<br><br> Data:&nbsp;&nbsp;<code><i>hasharray</i></code> contains a list of hashes and the keypaths used to sign each hash: <code>[{'hash':'<i>hash 1</i>', 'keypath':'<i>keypath 1</i>'}, ... ]</code>. Multiple hashes can be signed in one command. Each hash must be 64-characters long (representing a 32-byte hexadecimal value). <br><br> Checkpub:&nbsp;&nbsp;<code><i>pubkeyarray</i></code> contains a list of compressed pubkeys and associated keypaths. This is used for checking if a pubkey, e.g. for a change output, is part of the wallet: <code>[{'pubkey':'<i>pubkey 1</i>', 'keypath':'<i>keypath 1</i>'}, ... ]</code>. Any number of pubkeys can be checked. The result is added to the encrypted verification message: <code>[{'pubkey':'<i>pubkey 1</i>', 'present':true}, ... ]</code>.<br><br> Meta:&nbsp;&nbsp;<code><i>metadata</i></code> is included 'as is' in the returned encrypted verfication message. This is typically a hash of the unsigned transaction.<br><br> The JSON value of the <code>echo</code> response is encrypted with the verification key (see <code>verifypass</code> below). For locked devices, the <code>lock_pin</code> is the single-use PIN required to 'unlock', or allow, signatures to be created and returned after sending the second <code>sign</code> command."
+              },
+              {
+                  "method":
+                  {   "sign" :
+                      {
+                          "pin": "<i>lock_pin</i>"
+                      }
+                  },
+                  "reply":
+                  {   "sign" :
+                      {
+                          "sig" : "<i>signature</i>",
+                          "recid" : "<i>recid</i>"
+                      }
+                  },
+                  "notes": "The second <code>sign</code> command turns on the LED for touch button user confirmation. Its reply contains the signatures. For an unlocked device, <code>pin</code> is ignored, and an empty command can be sent instead: <code>{'sign': ''}</code>. <br><br> Returned signatures are not post-processed. DER encoding for a standard transaction is to be done in the client software. <code>recid</code> is the recoverable ID that can be used to derive the public key from the signature. ECDSA signing without pre- or post-processing provides compatibility 'out-of-the-box' with multisignature protocols, altcoins, or other custom implementations."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Set a verification key for two-factor authentication (2FA)",
+          "syntax":
+          [   {
+                  "method": {"verifypass" : "<i>operation</i>"},
+                  "reply":  {"verifypass" : "<i>reply</i>"},
+                  "notes": "Operation:&nbsp;&nbsp;<code>export</code>, <code>create</code>, or <code>{'ecdh': '<i>pubkey A</i>'}</code>. <code>create</code> uses the hardware random number generator to create a random 64 character hexadecimal string as a verification key. <code>{'ecdh': '<i>pubkey</i>'}</code> implements Diffie-Hellman key exchange using the secp2561 elliptic curve. <code>export</code> saves the key to the micro SD card in a plaintext file named <code>verification.txt</code>. <br><br>The reply is <code>success</code> for <code>create</code> or <code>export</code>. For <code>ecdh</code>, the reply is <code>{'ecdh': '<i>pubkey B</i>'}</code>. To avoid MITM from intercepting the shared ECDH secret, LED blinks (to be entered by hand on the 2FA device) are included in key creation. Watch for future tutorial videos for details. <br><br>2FA is used to verify that the correct transaction is signed even when using a fully compromised host computer. A verification key is generated during the factory installation and can be updated at any time by an owner. The verification message can be displayed and checked on a separate device (i.e. <a href='https://github.com/digitalbitbox/2FA-app'>smartphone app</a> or web service) that knows the verification key. The AES-256-CBC algorithm is used for encryption."
+              },
+              {
+                  "method": {"device" : "lock"},
+                  "reply":
+                  {   "device":
+                      {
+                          "lock":"<i>boolean</i>"
+                      }
+                  },
+                  "notes": "Disables <code>backup</code>, <code>verifypass</code>, and <code>seed</code> commands. These can be re-enabled only after a <code>reset</code> command. <u>Be sure to backup your wallet before locking the device!</u> <br><br>The <code>verifypass</code> command allows a second object to be used for verification. If a thief steals an unlocked BitBox <u>and</u> knows its password, the coins can be taken without the need for the second object. The <code>lock</code> command adds full 2FA protection by requiring the thief to also possess the second object in order to steal coins. After locking the BitBox, a single-use 4-digit PIN is included within the encrypted verification message and is displayed on the second object. This PIN is required to unlock (i.e. decrypt) the signed transaction before it is broadcast to the Bitcoin network."
+              }
+  
+          ]
+      },
+  
+  
+      {   "title": "Reset",
+          "syntax":
+          [   {
+                  "method": {"reset" : "__ERASE__"},
+                  "reply":  {"reset" : "success"},
+                  "notes": "Factory resets the wallet and erases all wallet data. U2F second-factor authentication data is NOT reset."
+              },
+              {
+                  "method": {"reset" : "U2F"},
+                  "reply": {"reset" : "success"},
+                  "notes": "DEPRECATED. Use <code>{seed: {source: U2F_create}}</code> to reset the U2F key."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Name the device",
+          "syntax":
+          [   {
+                  "method": {"name" : "<i>name</i>"},
+                  "reply":  {"name" : "<i>name</i>"},
+                  "notes": "Saves a new <code>name</code>. Long names are truncated to 31 characters. Sending an empty string will return the current name."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Blink the LED",
+          "syntax":
+          [   {
+                  "method": {"led" : "<i>mode</i>"},
+                  "reply":  {"led" : "success"},
+                  "notes": "<code><i>mode</i></code> is <code>blink</code> or <code>abort</code>. The latter reproduces the LED blinks that occur when a user aborts an operation that requires touch confirmation."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Get a random number from the device",
+          "syntax":
+          [   {
+                  "method": {"random" : "<i>mode</i>"},
+                  "reply":  {"random" : "<i>number</i>"},
+                  "notes": "Mode:&nbsp;&nbsp;<code>true</code> or <code>pseudo</code>.<br><br>A 16 byte random number is returned as a hexadecimal string. The hardware random number generator (RNG) on a high-security crypto  <a href='https://www.microchip.com/ATAES132A'>chip</a> is used. The true RNG mode updates a seed value written to the chip's EEPROM, which has a <u>specified minimum lifespan of 100,000 write cycles</u>. The pseudo RNG mode derives numbers using this seed and does not affect lifespan."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Get an extended public key at the indicated keypath",
+          "syntax":
+          [   {
+                  "method": {"xpub" : "<i>keypath</i>"},
+                  "reply":
+                  {
+                          "xpub" : "<i>xpub</i>",
+                          "echo": "<i>encrypted_xpub</i>"
+                  },
+                  "notes": "Returns the <code>xpub</code> for the given <code><i>keypath</i></code>, for example, <code>m/purpose'/coin_type'/account'/change/address_index</code>, following the BIP44 standard. An apostrophe designates a hardened key derivation. A letter <code>p</code>, <code>h</code>, or <code>H</code> can be used instead of an apostrophe. In practice, the BitBox wallet is agnostic of the keypath, i.e., <code>m/index_1/index_2/index_3/...index_N</code> is valid for a varying number of <i>N</i> indices. Each index can be designated as hardened or not.<br><br> The <code>echo</code> returns the extended public key encrypted using the 2FA verification key."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Set access to the bootloader",
+          "syntax":
+          [   {
+                  "method": {"bootloader" : "<i>status</i>"},
+                  "reply":  {"bootloader" : "<i>status</i>"},
+                  "notes": "<code><i>status</i></code> is <code>lock</code> or <code>unlock</code>. When unlocked, the bootloader is entered by pressing the touch button within 3 seconds of plugging in the device. Otherwise, the firmware starts."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Get device information",
+          "syntax":
+          [   {
+                  "method": {"device" : "info"},
+                  "reply":
+                  {   "device" :
+                      {
+                          "serial" : "<i>number</i>",
+                          "version": "<i>version</i>",
+                          "id": "<i>sha(xpub)</i>" ,
+                          "lock": "<i>boolean</i>",
+                          "bootlock": "<i>boolean</i>",
+                          "sdcard": "<i>boolean</i>",
+                          "seeded": "<i>boolean</i>",
+                          "name": "<i>name</i>",
+                          "U2F": "<i>boolean</i>",
+                          "U2F_hijack": "<i>boolean</i>",
+                          "new_hidden_wallet": "<i>boolean</i>"
+                      }
+                  },
+                  "notes": "<code>id</code> is a SHA256 hash of the master extended public key if seeded."
+              }
+          ]
+      },
+  
+  
+      {   "title": "Feature options",
+          "syntax":
+          [   {
+                  "method":
+                  {   "feature_set" :
+                      {
+                          "U2F": "<i>boolean</i>",
+                          "U2F_hijack": "<i>boolean</i>",
+                          "new_hidden_wallet": "<i>boolean</i>"
+                      }
+                  },
+                  "reply": {"feature_set" : "success"},
+                  "notes": "<code>U2F</code> enables or disables the U2F second-factor authentication function. If disabled, any U2F commands will be answered with a device busy error message. Enabled by default on factory reset.<br><br> <code>U2F_hijack</code> enables or disables browser access to the hardware wallet API. Communication is done by hijacking the 'key handle' data field of the U2F authentication command. This must be enabled to use any web integrations, such as MyEtherWallet. If <code>U2F</code> is disabled, <code>U2F_hijack</code> will also be disabled, even if it is set to be enabled. When disabled, any U2F hijack commands will be answered with a device busy error message. Enabled by default on factory reset. <code>new_hidden_wallet</code> is enabled by default. Disabling it activates the deprecated legacy hidden wallet mode (added to make migration easier).<br><br> <i>boolean</i> should be <code>true</code> or <code>false</code> and without quotes. A single feature or any combination of features can be sent."
+              }
+          ]
+      }
+  ]
+  }
+  

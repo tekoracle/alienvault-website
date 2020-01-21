@@ -1,0 +1,13 @@
+* {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+.nav-container,
+.nav-container *,
+.subnav-container,
+.subnav-container *,
+footer,
+footer * {
+  display: none !important;
+}

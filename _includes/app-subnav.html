@@ -1,0 +1,15 @@
+<div class="subnav-container">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <ul class="subnav text-left">
+          <li {% if page.path == 'app/index.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link app/index.html %}">Overview</a></li>
+          <li {% if page.path == 'app/tour.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link app/tour.html %}">Tour</a></li>
+          <li><a href="{{ site.baseurl }}{% link start/index.html %}">Download</a></li>
+          <li class="end"><a href="https://github.com/digitalbitbox/bitbox-wallet-app" target="_blank">View on GitHub</a></li>
+          <li><a href="https://guides.shiftcrypto.ch/bitboxapp/" target="_blank">Support</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

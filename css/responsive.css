@@ -1,0 +1,309 @@
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h4,
+  h4.thin,
+  .title + h4:not(.ignore) {
+    font-size: 16px;
+  }
+
+  p.bottom-aligned {
+    position: initial;
+  }
+
+  a:hover {
+    color: var(--primary) !important;
+  }
+
+  .mobile {
+    display: initial;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .h-padding {
+    padding-left: var(--spaceMedium);
+    padding-right: var(--spaceMedium);
+  }
+
+  .m-top-large-on-small {
+    margin-top: var(--spaceLarge);
+  }
+
+  .m-top-xlarge-on-small {
+    margin-top: var(--spaceXLarge);
+  }
+
+  .m-top-xxlarge-on-small {
+    margin-top: calc(var(--spaceXXLarge) * 0.6);
+  }
+
+  .title.onHero {
+    text-align: center;
+  }
+
+  .hero {
+    background-image: url(/assets/images/images/bb02-mobile.jpg);
+  }
+
+  .hero .row {
+    margin-top: calc(var(--spaceXLarge) * -1);
+  }
+
+  .title.onHero {
+    font-size: 30px;
+  }
+
+  .title.onHero .standOut {
+    font-size: 26px;
+  }
+
+  .opensource {
+    max-width: 314px;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  section {
+    position: relative;
+  }
+
+  .decorator {
+    background-attachment: fixed;
+    background-size: auto;
+  }
+
+  .mobile-background-container {
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;
+  }
+
+  .mobile-background {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center bottom;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .footer-logo {
+    height: 28px;
+  }
+
+  .panel {
+    padding: var(--spaceSmall) !important;
+  }
+
+  .announcements span {
+    padding-bottom: var(--spaceXSmall);
+  }
+
+  .announcements span,
+  .announcements a {
+    display: block;
+  }
+
+  .feature {
+    margin-top: var(--spaceLarge);
+  }
+
+  .reviews .review,
+  .items .item {
+    margin-top: 35px;
+  }
+
+  .nav-container.sticky {
+    margin-bottom: 48px;
+  }
+
+}
+
+
+/* Added by Johannes */
+@media (max-width: 575.98px) {
+
+  .table-responsive-sm {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive-sm > .table-bordered {
+    border: 0;
+  }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+  .table-responsive-md {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive-md > .table-bordered {
+    border: 0;
+  }
+
+}
+
+
+@media (max-width: 991.98px) {
+
+  .table-responsive-lg {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive-lg > .table-bordered {
+    border: 0;
+  }
+
+}
+
+
+@media (max-width: 1199.98px) {
+
+  .table-responsive-xl {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive-xl > .table-bordered {
+    border: 0;
+  }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .hide_col{
+    display: none;
+  }
+
+}
+/* END of added by Johannes */
+
+
+@media (max-width: 740px) {
+
+  .nav-menu, .cart-menu {
+    display: none;
+  }
+
+  .mobile-icon {
+    display: block;
+  }
+
+}
+
+
+@media (max-width: 1680px) {
+
+  .hero-image {
+    height: calc(var(--heroHeight) * 3);
+  }
+
+}
+
+
+@media (max-width: 1390px) {
+
+  .hero-image {
+    height: calc(var(--heroHeight) * 2.5);
+  }
+
+}
+
+
+@media (max-width: 1170px) {
+
+  .hero-image {
+    height: calc(var(--heroHeight) * 2);
+  }
+
+  .title.onHero .standOut {
+    font-size: 38px;
+  }
+
+  .opensource {
+    max-width: 336px;
+    margin-top: 3px;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+
+  .hero-image {
+    height: calc(var(--heroHeight) * 2);
+  }
+
+  .title.onHero .standOut {
+    font-size: 32px;
+  }
+
+  .opensource {
+    max-width: 284px;
+    margin-top: 0;
+  }
+
+}
+
+
+@media (max-width: 904px) {
+
+  .hero-image {
+    height: calc(var(--heroHeight) * 1.5);
+  }
+
+}
+
+
+@media (min-width: 1921px) {
+
+  .with-space > .content-width {
+    padding: 20px 0;
+  }
+
+}

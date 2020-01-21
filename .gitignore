@@ -1,0 +1,10 @@
+_DS_Store
+tmp
+thirdparty
+*.bak
+*.swp
+*.swo
+.DS_Store
+/_site
+/vendor
+/.bundle

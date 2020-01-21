@@ -1,0 +1,15 @@
+<div class="subnav-container">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <ul class="subnav text-left">
+          <li {% if page.path == 'bitbox01/index.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox01/index.html %}">Overview</a></li>
+          <li {% if page.path contains 'bitbox01/api/' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox01/api/5.0.0.html %}">API documentation</a></li>
+          <li {% if page.path == 'bitbox01/threat-model.html' %}class="active"{% endif %}><a href="{{ site.baseurl }}{% link bitbox01/threat-model.html %}">Threat model</a></li>
+          <li class="end"><a href="https://github.com/digitalbitbox/mcu" target="_blank">View on GitHub</a></li>
+          <li><a href="https://guides.shiftcrypto.ch/bitbox01/" target="_blank">Support</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

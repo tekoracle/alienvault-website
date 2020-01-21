@@ -1,0 +1,310 @@
+---
+title: Chain Forks
+image: /assets/images/ogp/bitboxapp.png
+redirect_from: /fork/
+redirect_to: https://guides.shiftcrypto.ch/bitboxapp/forks/
+---
+
+{% include app-subnav.html %}
+
+<section class="rightup topFlat with-space gray-gradient">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h1 class="title">Blockchain forks</h1>
+        <h4>Updated 24 November 2017</h4>
+        <div class="m-top-xlarge">
+          <div class="inline">
+            <a class="scrollto link" href="#general-information">General information</a>
+            <a class="scrollto link" href="#segwit2x">Segwit2x fork</a>
+            <a class="scrollto link" href="#bitcoingold">Bitcoin Gold</a>
+            <a class="scrollto link" href="#bitcoincash">Bitcoin Cash</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rightup with-space" id="general-information">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7 text-left">
+        <h1 class="title">General information on Bitcoin chain forks</h1>
+        <div class="m-top-xlarge">
+          <h4>Background</h4>
+          <p>
+            In the future, the Bitcoin blockchain may fork or split.
+            This occurs when a portion of Bitcoin nodes run software that is not fully compatible with other nodes.
+            Chain forks occur in order to update the Bitcoin protocol.
+            A chain fork could be thought of as a vote about how best to improve Bitcoin.
+            However, a chain fork may result in unreliable transactions for an unknown length of time.
+            Furthermore, if different groups have different ideas about how to best improve Bitcoin,
+            it may be hard to predict how the community as a whole will value (i.e. price) coins in each side of the chain fork.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>The good news is that coins held in a BitBox are completely safe.</h4>
+          <p>
+            The BitBox itself and any coins secured by the device do not depend on the type of nodes active.
+            When a chain fork occurs, you automatically now own coins on both sides of the fork, or, in other words, coins on each chain.
+            All coins held in the device CANNOT be lost (unless you lose your password).
+            All coins are safe no matter what happens in a future chain fork.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>However, risks exist when sending and possibly receiving coins.</h4>
+          <p>
+            This is the same situation for any and all types of wallets.
+            Be warned that transactions sent while the chain is forked could disappear later.
+            If a transaction disappears, Bitcoins sent would automatically return to the sender.
+            Coins you receive may disappear later!
+            While the situation remains unresolved, other people may thus not accept a transaction as a valid payment.
+            If 'replay protection' is not implemented for a chain fork,
+            a transaction on one chain can (and likely will) be replayed by an anonymous third party on the other chain.
+            This means that sending coins on one chain will likely cause your cloned coins on the other chain to also get sent.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>What should I do?</h4>
+          <p>
+            In the event that a chain fork happens, the safest thing to do is to do nothing and wait for the dust to settle.
+            Theoretically, the situation should resolve quickly - i.e. which of the different chains becomes the dominant chain -
+            but this is not guaranteed.
+            Considering that a transaction with too low of a fee can take extra time until it enters the blockchain,
+            it is advisable to suspend transacting a day or two before a fork is scheduled to occur.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>What will we do?</h4>
+          <p>
+            In general, our goal is to help our customers protect their coins.
+            We try to be neutral and follow the community's lead.
+            In the event a chain fork occurs that is valued by the community,
+            we will do our best to quickly provide a tool that can safely access and send coins on both sides of the chain fork.
+            This may be either directly in our desktop app or by an integration with a third party app.
+            We will provide status updates and instructions on Twitter as needed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rightup rightdown with-space gray-gradient" id="segwit2x">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7">
+        <h1 class="title">Segwit2x forks</h1>
+        <div class="m-top-xlarge">
+          <p>The Segwit2x fork scheduled to occur 16 November 2017 has been <a target="_blank" href="https://lists.linuxfoundation.org/pipermail/bitcoin-segwit2x/2017-November/000685.html">called off</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="leftup with-space" id="bitcoingold">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7 text-left">
+        <h1 class="title">Bitcoin Gold</h1>
+        <div class="m-top-xlarge">
+          <p>Continue reading this section if you had BTC on a BitBox on October 24th, 2017 and would like to access Bitcoin Gold (BTG).</p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4 class="m-bottom-none">Accessing Bitcoin Gold</h4>
+          <p class="meta m-top-xsmall">Updated October 1st, 2018</p>
+          <p>
+            In October 2017, the Bitcoin blockchain was cloned, or "forked",
+            to create a new cryptocurrency coin called Bitcoin Gold (BTG).
+            As a consequence, anyone possessing Bitcoin (BTC) at the time also automatically received BTG.
+            You can decide to keep BTG or sell it or ignore it as you wish.
+            Some <a target="_blank" href="https://bitcoingold.org/">exchanges</a> will allow trading it.
+          </p>
+          <p>
+            The BitBox firmware natively supports Bitcoin Gold, but the Desktop app does not and likely will not in the future.
+            However, Bitcoin Gold can be accessed by exporting your private keys into a third party wallet that does support BTG.
+            Step-by-step instructions for one possible way to access your BTG follow below.
+            This example uses the popular <a target="_blank" href="https://electrum.org">Electrum</a> software to display private keys and
+            the <a target="_blank" href="https://coinomi.com/">Coinomi Android wallet</a> to access the BTG.
+          </p>
+          <p>
+            <span class="bold">IMPORTANT: To access your BTG without compromising your BTC, be sure to first 'split' your coins.</span>
+            This can be done using the Desktop app by creating a new wallet and moving the BTC from your current wallet to the new wallet.
+            This requires switching wallets using the micro SD card.
+            Only your BTC will move and not your BTG because the BTG blockchain has implemented replay protection.
+            Wait until the transaction is confirmed on the BTC blockchain.
+            The BTG remains in your old wallet.
+          </p>
+          <p>
+            <span class="bold">WARNING: We have and claim no relationship with Bitcoin Gold or any third parties supporting Bitcoin Gold.
+            We cannot vouch for the safety of any BTG software or application or at this time.</span>
+            The following instructions are provided for those who wish to access their BTG quickly and are willing to assume the risk of potentially losing coins.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>Step-by-step instructions for accessing your BTG</h4>
+          <p>1. Plug in your BitBox with the backup micro SD card inserted.</p>
+          <p>2. Create a new wallet by resetting the device.</p>
+          <a href="{{ '/assets/images/forks/BCH0.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH0.png' | relative_url }}" alt="" />
+          </a>
+          <p>3. Copy an address in the new wallet.</p>
+          <a href="{{ '/assets/images/forks/BCH1.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH1.png' | relative_url }}" alt="" />
+          </a>
+          <p>4. Restore the old wallet.</p>
+          <a href="{{ '/assets/images/forks/BCH2.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH2.png' | relative_url }}" alt="" />
+          </a>
+          <p>5. Send your coins to the new address.</p>
+          <p>If this step is skipped, the private keys protecting your BTC will be AT RISK by being exposed to your computer and third party software.</p>
+          <p>Ethereum (including ERC20 tokens) held using the BitBox is safe. However, if you wish to use the same backup file for both Bitcoin and Ethereum, then ether would also need to be sent to a new address using the Ethereum integration.</p>
+          <a href="{{ '/assets/images/forks/BCH3.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH3.png' | relative_url }}" alt="" />
+          </a>
+          <p>6. Wait for the transaction to be confirmed by the Bitcoin network.</p>
+          <p>7. Optionally but recommended: insert a different micro SD card and create another backup of the old wallet. In this way, the new wallet backup on the other micro SD card will not be exposed to your computer in the step below.</p>
+          <a href="{{ '/assets/images/forks/BCH4.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH4.png' | relative_url }}" alt="" />
+          </a>
+          <p>8. Using a micro SD card reader, open the old wallet backup PDF file located in the `digitalbitbox` folder (on the micro SD card used when creating the wallet). Copy the "Wallet seed" to the "wallet backup" field in the Backup Center, enter the backup password in the "password" field and click "Generate". Note: the Backup Center is client-side javascript that can be downloaded and run offline if you wish.</p>
+          <a href="{{ '/assets/images/forks/BCH5.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH5.png' | relative_url }}" alt="" />
+          </a>
+          <p>9. The text in the "Electrum recovery key" field can be loaded into <a target="_blank" href="http://electrum.org/">Electrum</a>. Follow the instructions in their app's setup wizard.</p>
+          <a href="{{ '/assets/images/forks/BCH6.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH6.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_0.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_0.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_1.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_1.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_2.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_2.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_3.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_3.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_4.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_4.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_5.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_5.png' | relative_url }}" alt="" />
+          </a>
+          <p>10. Sweep the private keys into a new Coinomi Bitcoin Gold "BTG" wallet by scanning the QR codes of the private keys. The newly created Electrum wallet is a Bitcoin wallet. However, since Bitcoin Gold is a chain fork of Bitcoin, BTG and BTC private keys are the same.</p>
+          <p>
+            - In Electrum, go to the Addresses tab. If an Addresses tab is not present, click the menu item View then Show Addresses.<br>
+            - Use the "Filter" to view "Used" addresses for both "Receiving" and "Change" options.<br>
+            - For each used address, right click on the address and select "Private key". <br>
+            - Click the QR code icon in the popup window to display the QR code. <br>
+          </p>
+          <p>To scan these QR codes into Coinomi, click on the menu icon (the 3 vertical dots) in the top right corner of the Coinomi app and select "Sweep Wallet". You are able to access your BTG after sweeping all used private keys. Note that a private key will only hold BTG if it was holding BTC at the time of the chain fork.</p>
+          <a href="{{ '/assets/images/forks/Electrum_6b.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_6b.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/Electrum_6c.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/Electrum_6c.png' | relative_url }}" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="leftup leftdown with-space gray-gradient" id="bitcoincash">
+  <div class="content-width">
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-9 col-md-7 text-left">
+        <h1 class="title">Bitcoin Cash</h1>
+        <div class="m-top-xlarge">
+          <p>Continue reading if you had BTC on a BitBox on August 1st, 2017 and would like to access Bitcoin Cash (BCH).</p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4 class="m-bottom-none">Claiming Bitcoin Cash</h4>
+          <p class="meta m-top-xsmall">Updated October 1st, 2018</p>
+          <p>
+            On August 1st 2017, some businesses and Bitcoin miners cloned Bitcoin
+            to create a new cryptocurrency coin called Bitcoin Cash (BCH).
+            As a consequence, anyone possessing Bitcoin (BTC) at the time also automatically received BCH.
+            Two-way replay protection means that BTC and BCH can be used independently from one another.
+            You can decide to keep BCH or sell it or ignore it as you wish.
+          </p>
+          <p>
+            The BitBox firmware natively supports Bitcoin Cash, but the Desktop app does not.
+            The BitBox to be used directly with the third party app <a target="_blank" href="http://www.electroncash.org/">Electron Cash</a>,
+            a fork of the popular <a target="_blank" href="http://www.electrum.org/">Electrum Bitcoin wallet</a>.
+          </p>
+          <p>
+            WARNING: Electron Cash is a copy of the Electrum code with modifications for BCH.
+            Please read Electrum's notices <a target="_blank" href="https://electrum.org/bcc.txt">here</a> and
+            <a target="_blank" href="https://electrum.org/bcc2.txt">here</a> to understand the relationship between Electrum and Electron Cash.
+            <span class="bold">We have and claim no relationship with Electron Cash. We cannot vouch for the safety of any BCH software or application at this time.</span>
+          </p>
+          <p>
+            IMPORTANT: To access your BCH without compromising your BTC, be sure to first 'split' your coins.
+            This can be done using the Desktop app by creating a new wallet and moving the BTC from your current wallet to the new wallet.
+            This requires switching wallets using the micro SD card.
+            Only your BTC will move and not your BCH because the BCH blockchain has replay protection.
+            Wait until the transaction is confirmed on the BTC blockchain.
+            The BCH remains in your old wallet.
+          </p>
+        </div>
+        <div class="m-top-xlarge">
+          <h4>Step-by-step instructions for accessing your BCH</h4>
+          <p>1. Plug in your BitBox with the backup micro SD card inserted.</p>
+          <p>2. Create a new wallet by resetting the device.</p>
+          <a href="{{ '/assets/images/forks/BCH0.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH0.png' | relative_url }}" alt="" />
+          </a>
+          <p>3. Copy an address in the new wallet.</p>
+          <a href="{{ '/assets/images/forks/BCH1.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH1.png' | relative_url }}" alt="" />
+          </a>
+          <p>4. Restore the old wallet.</p>
+          <a href="{{ '/assets/images/forks/BCH2.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH2.png' | relative_url }}" alt="" />
+          </a>
+          <p>5. Send your coins to the new address.</p>
+          <p>
+            If this step is skipped, Electron Cash will have access to the private keys protecting your BTC.
+            Ethereum (including ERC20 tokens) held using the BitBox is safe.
+            If you wish to use the same backup file for both Bitcoin and Ethereum,
+            then ether would also need to be sent to a new address using the Ethereum integration.
+          </p>
+          <a href="{{ '/assets/images/forks/BCH3.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/BCH3.png' | relative_url }}" alt="" />
+          </a>
+          <p>6. Wait for the transaction to be confirmed by the Bitcoin network.</p>
+          <p>7. Download <a href="http://www.electroncash.org/">Electron Cash</a>. Follow the instructions in their app's setup wizard in the following manner:</p>
+          <a href="{{ '/assets/images/forks/ElectronCash0.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash0.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/ElectronCash1.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash1.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/ElectronCash2.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash2.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/ElectronCash3.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash3.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/ElectronCash4.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash4.png' | relative_url }}" alt="" />
+          </a>
+          <a href="{{ '/assets/images/forks/ElectronCash5.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash5.png' | relative_url }}" alt="" />
+          </a>
+          <p class="text-left m-top-medium">Be careful here, you have the enter the Bitcoin coinpath m/44'/0'/0':</p>
+          <a href="{{ '/assets/images/forks/ElectronCash6.png' | relative_url }}">
+            <img src="{{ '/assets/images/forks/ElectronCash6.png' | relative_url }}" alt="" />
+          </a>
+          <p>After the setup is finished, you are able to spend your BCH.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+---
+title: BitBox02 security features
+description: We designed the BitBox02 from scratch in order to make it reasonably secure.
+image: /assets/images/ogp/bitbox02.png
+---
+
+{% include bitbox02-subnav.html %}
+
+<section class="rightup topFlat with-space gray-gradient" id="hero_BB02">
+  <div class="content-width">
+    {% include bitbox-logo.html %}
+    <div class="row center-xs">
+      <div class="col-xs-11 col-sm-7">
+        <h1 class="title">BitBox<span class="lab-regular">02</span> security features</h1>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="feature col-xs-11 col-sm-5">
+        <h4>On-device security</h4>
+        <p>
+          Securely verify transactions, receive addresses and other data on the built-in screen by using gesture confirmation (tap, slide and hold).
+          Enter your password directly on the device instead of the BitBoxApp.
+        </p>
+      </div>
+      <div class="feature col-xs-11 col-sm-5 col-sm-offset-1">
+        <h4>Secure chip</h4>
+        <p>
+          To avoid brute force attacks, a monotonic counter in the secure chip limits the total attempts of device-password entries.
+          Password stretching increases the resources needed to test each possible password, making such attacks difficult.
+        </p>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="feature col-xs-11 col-sm-5">
+        <h4>Bootloader</h4>
+        <p>
+          The BitBox02 accepts only firmware signed by Shift Cryptosecurity.
+          The bootloader prevents firmware downgrades and installing firmware for a different edition of the BitBox02 (Multi or Bitcoin-only).
+          The bootloader can also display the hash of the firmware before running it for binary transparency.
+        </p>
+      </div>
+      <div class="feature col-xs-11 col-sm-5 col-sm-offset-1">
+        <h4>Seed generation and storage</h4>
+        <p>
+          The encrypted seed is stored on the microcontroller unit (MCU), protected by both the secure chip and the user-chosen device password.
+          The BitBox02 uses multiple sources of entropy to generate the seed.
+        </p>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="feature col-xs-11 col-sm-5">
+        <h4>Open-source</h4>
+        <p>
+          The firmware of the BitBox02 is open-source and allows for deterministic builds, which means you can verify what you are installing: Don't trust, verify!
+          In addition, we have a bug bounty program to encourage independent review of the firmware and responsible disclosure of any findings.
+        </p>
+      </div>
+      <div class="feature col-xs-11 col-sm-5 col-sm-offset-1">
+        <h4>Attestation and encryption</h4>
+        <p>
+          Each device is attested during factory setup and the BitBoxApp checks the authenticity of your device each time.
+          The USB communication between the app and the device is encrypted in order to protect against malicious USB cables and software stacks.
+        </p>
+      </div>
+    </div>
+
+    <div class="row center-xs m-top-large">
+      <div class="col-xs-11 col-sm-8">
+        <h2 id="best-practices">Best security practices</h2>
+        <p>
+          In order to be secure, you should always trust the screen of your hardware wallet over the information displayed on your computer and verify carefully what is displayed on your hardware wallet.
+          The only time you should side with your computer is when the BitBoxApp tells you that the device is not authentic.
+        </p>
+        <p>
+          You should always set up the device yourself and never give your device password or wallet backup to anyone else.
+          Only rely on others for handling your BitBox if they are completely trustworthy (and you asked them to help you rather than the other way around).
+          Never accept unsolicited help for your cryptoassets.
+        </p>
+        <p>
+          We will never ask you for your password, microSD card or mnemonic phrase and neither should anyone else.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
